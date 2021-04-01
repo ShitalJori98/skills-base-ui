@@ -6,10 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
 function Signup(props) {
-    console.log('UserReducer-->',props.UserReducer);
     const onChange = e => {
+        console.log("signup", e.target.name, e.target.value);
         props.onSignUpFormChange(e.target.name, e.target.value);
-        // setstate({ ...state, [e.target.name]: e.target.value })
     }
     let validForm = () => {
         const state = props.UserReducer.user;

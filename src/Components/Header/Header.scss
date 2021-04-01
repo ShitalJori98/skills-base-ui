@@ -4,12 +4,11 @@
     height: 60px;
     display: flex;
     a {
-        color: white;
+        color: $header-link-color;
         text-decoration: none;
         margin: 20px;
         &:hover {
             color: $achor-hover;
         }
-    }
-    
+    }   
 }
