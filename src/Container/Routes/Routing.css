@@ -1,0 +1,26 @@
+
+
+    .topnav{
+        overflow:hidden;
+        background-color:white;
+      }
+      .topnav a{
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        font-size: 17px;
+      
+      }
+      
+      /* .topnav a.active{
+        background-color:skyblue;
+          color: white;
+      } */
+      
+      .topnav a.active {
+      padding: 7px 15px;
+      background: rgb(0, 128, 111);
+      border: 1px solid #006d6d;
+      border-radius: 40em;
+      }
