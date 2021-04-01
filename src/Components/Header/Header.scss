@@ -1,0 +1,14 @@
+@import './../../themes/global.scss';
+.header-container {
+    background-color: $theme-color;
+    height: 60px;
+    display: flex;
+    a {
+        color: $header-link-color;
+        text-decoration: none;
+        margin: 20px;
+        &:hover {
+            color: $achor-hover;
+        }
+    }   
+}

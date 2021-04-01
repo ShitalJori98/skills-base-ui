@@ -1,70 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import {connect} from 'react-redux';
+import { onSignUpFormChange } from '../../Redux/actions/formActions';
 import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
-function Signup() {
-    let initialState = {
-        FullName: '',
-        Email: '',
-        Password: '',
-        ConfirmPassword: '',
-        firstnameError: '',
-        passwordError: '',
-        emailError: '',
-        userid: ''
-    }
-    const [state, setstate] = useState(initialState)
+function Signup(props) {
     const onChange = e => {
-        setstate({ ...state, [e.target.name]: e.target.value })
+        console.log("signup", e.target.name, e.target.value);
+        props.onSignUpFormChange(e.target.name, e.target.value);
     }
     let validForm = () => {
+        const state = props.UserReducer.user;
         var isValid = true;
         if (state.FullName.length === 0) {
-            setstate({...state ,
-                firstnameError: 'firstName should not be empty'
-            })
+            props.onSignUpFormChange("firstnameError", 'firstName should not be empty');
             isValid = false
         }
         else if (state.FullName.length > 0) {
-            setstate({ ...state,
-                firstnameError: ''
-            })
+            props.onSignUpFormChange("firstnameError", '');
             isValid = true
         }
         if (!state.Email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
-            setstate({...state , emailError: 'email should contain @ & .' })
+            props.onSignUpFormChange("emailError", 'email should contain @ & .');
             isValid = false
         }
         else if (state.Email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
-            setstate({...state , emailError: '' })
+            props.onSignUpFormChange("emailError", '' );
             isValid = true
         }
         if (!state.Password.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)) {
-            setstate({...state , passwordError: 'password should contain atleast 1 special symbol 1 capital & length=8' })
+            props.onSignUpFormChange("passwordError", 'password should contain atleast 1 special symbol 1 capital & length=8');
             isValid = false
         }
         else if (state.Password.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)) {
-            setstate({ ...state ,
-                passwordError: ''
-            })
+            props.onSignUpFormChange("passwordError", '');
             isValid = true
         }
         if (state.Password != state.ConfirmPassword) {
-            setstate({ ...state ,
-                passwordError: 'password and confirm password not match'
-            })
+            props.onSignUpFormChange("passwordError", 'password and confirm password not match');
             isValid = false
         }
         else if (state.Password = state.ConfirmPassword) {
-            setstate({...state, passwordError: '' })
+            props.onSignUpFormChange("passwordError", '');
             isValid = true
         }
         return isValid
     }
     const submitData = e => {
         e.preventDefault();
-
+        const state = props.UserReducer.user;
         const val = validForm();
         var allUserDetails = JSON.parse(localStorage.getItem('UsersData'))
         var a = true
@@ -117,6 +102,8 @@ function Signup() {
             }
         }
     }
+    
+    const state = props.UserReducer.user;
     return (
         <div className='container'>
             <form autoComplete="off">
@@ -151,7 +138,20 @@ function Signup() {
         </div>
     )
 }
-export default Signup
+
+const mapStateToProps = (state) => {
+    return {
+        UserReducer: state.UserReducer
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    onSignUpFormChange: (key, value) => {
+        dispatch(onSignUpFormChange(key, value));
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
 
 
 

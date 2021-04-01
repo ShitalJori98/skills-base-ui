@@ -3,6 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Signup from '../SignUp/Signup';
 import { useHistory } from "react-router-dom";
+import './Signin.scss';
+
 toast.configure()
 
 function Signin() {
@@ -86,7 +88,7 @@ function Signin() {
 
 
     return (
-        <div className='container center from-group'>
+        <div className='container center from-group sign-in'>
         <center>
             <h3>Signin</h3>
             <div className="row">
