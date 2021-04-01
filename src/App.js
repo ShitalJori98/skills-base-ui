@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
-
 import Routing from './Container/Routes/Routing';
+import './themes/global.scss';
 
 function App() {
   return (

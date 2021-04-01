@@ -2,7 +2,7 @@
 
 } */
 .home{
-    background-image: url('D:/CLA_Skill_Base/skills-base-ui/src/Backimages/training-2877134_1920.jpg');
+    background-image: url('../../assets/images/homepage.jpg');
     background-size: cover;
     background-position: center;
     transition: 0.4 ease;
