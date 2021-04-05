@@ -1,19 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux';
  function Notification(props) {
-     console.log(props.AppReducer.notificationMessage);
-    return (
-        <div>
 
-               {
-            props.AppReducer.showNotification && 
-                  
+    const { showNotification, notificationMessage } = props.AppReducer;
+    if(showNotification) {
+        return( 
                 <div className='ui success message'>
-                        <div classNmae='header'>Form Completed</div>
-              
-                </div>}
-        </div>
-    )
+                    <div classNmae='header'>
+                        {
+                            notificationMessage
+                        }
+                    </div>
+                </div>
+            )
+     }
+
+     return null;
 }
 
 
@@ -32,4 +34,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
-

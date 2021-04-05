@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import {connect} from 'react-redux';
 import { onSignUpFormChange } from '../../Redux/actions/formActions';
+import { showSuccessMessage } from './../../Redux/actions/appAction';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
@@ -48,6 +50,10 @@ function Signup(props) {
         return isValid
     }
     const submitData = e => {
+
+        props.showSuccessMessage('testing message');
+        
+        return;
         e.preventDefault();
         const state = props.UserReducer.user;
         const val = validForm();
@@ -148,6 +154,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     onSignUpFormChange: (key, value) => {
         dispatch(onSignUpFormChange(key, value));
+    },
+
+    showSuccessMessage: (message) => {
+        dispatch(showSuccessMessage(message))
     }
 });
 

@@ -34,8 +34,9 @@ function Signin() {
         }
     }
 
-    const SignUp=(e)=>{
-        history.push("/signup");
+    const SignUp=(e)=> {
+
+        // history.push("/signup");
     }
 
     useEffect(() => {
