@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Signup from '../SignUp/Signup';
 import { useHistory } from "react-router-dom";
 import './Signin.scss';
+import Notification from '../../Components/Notifications/Notification';
 
 toast.configure()
 
@@ -104,7 +105,7 @@ function Signin() {
                       <input type='password' name='password' value={state.password} placeholder='password' onChange={onChange} className='from-control validate'/> 
                     </div>
                     </div>
-
+                   
                     <button type='button' className='btn btn-primary ' onClick={SignIn}>Sign in</button>&nbsp;&nbsp;&nbsp;
                     <button type='button' className='btn btn-primary ' onClick={SignUp}>Sign Up</button>
                 </form>
