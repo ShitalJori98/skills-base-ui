@@ -16,8 +16,8 @@ function Routing() {
             <Notification/>
             <Header />
             <Switch>
-            <Route path="/" component={Home} exact/>
-            <Route path ="/signin" component={Signin}/>
+            <Route path="/home" component={Home} exact/>
+            <Route path ="/" component={Signin}/>
             <Route path = "/signup" component ={Signup} />
 
             </Switch>

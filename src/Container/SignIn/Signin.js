@@ -34,9 +34,8 @@ function Signin() {
         }
     }
 
-    const SignUp=(e)=> {
-
-        // history.push("/signup");
+    const SignUp=(e)=>{
+        history.push("/signup");
     }
 
     useEffect(() => {
@@ -61,15 +60,16 @@ function Signin() {
                     if(username==user.Email && password==user.Password && user.isAdmin==true){
 
                         flag =true;
-                        message ="Admin Login Successfull";
-
+                        message ="Admin Login Successful";
+                        
                         break;
                         
                     }
                    else if(username==user.Email && password==user.Password && user.isAdmin==false){
                       
                     flag =true;
-                    message ="User Login Successfull";
+                    message ="User Login Successful";
+                    history.push("/home");
                     break;
                     }
 
@@ -106,9 +106,9 @@ function Signin() {
                       <input type='password' name='password' value={state.password} placeholder='password' onChange={onChange} className='from-control validate'/> 
                     </div>
                     </div>
-                   
+                   <Notification/>
                     <button type='button' className='btn btn-primary ' onClick={SignIn}>Sign in</button>&nbsp;&nbsp;&nbsp;
-                    <button type='button' className='btn btn-primary ' onClick={SignUp}>Sign Up</button>
+                    {/* <button type='button' className='btn btn-primary ' onClick={SignUp}>Sign Up</button> */}
                 </form>
             </div>
         </center>
